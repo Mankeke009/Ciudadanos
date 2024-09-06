@@ -15,7 +15,8 @@ public class Ciudadanos {
             System.out.println("1. Registrar Votante");
             System.out.println("2. Crear Consulta");
             System.out.println("3. Mostrar Resultados");
-            System.out.println("4. Salir");
+            System.out.println("4. Ver Votantes");
+            System.out.println("5. Salir");
             opcion = scanner.nextInt();
             scanner.nextLine();  
 
@@ -30,6 +31,9 @@ public class Ciudadanos {
                     mostrarResultados();
                     break;
                 case 4:
+                    verVotantes();
+                    break;
+                case 5:
                     System.out.println("Saliendo...");
                     break;
                 default:
@@ -56,11 +60,26 @@ public class Ciudadanos {
     }
 
     private static void mostrarResultados() {
-    for (ConsultaCiudadana consulta : consultas) {
-        System.out.println("Resultados de la consulta: " + consulta.getNombre());
-        consulta.mostrarResultados();
+        if (consultas.isEmpty()) {
+            System.out.println("No hay consultas disponibles.");
+            return;
+        }
+        for (ConsultaCiudadana consulta : consultas) {
+            System.out.println("Resultados de la consulta: " + consulta.getNombre());
+            consulta.mostrarResultados();
+        }
     }
-}
+    private static void verVotantes() {
+        if (votantes.isEmpty()) {
+            System.out.println("No hay votantes registrados.");
+            return;
+        }
+        
+        System.out.println("Votantes registrados:");
+        for (Votante votante : votantes) {
+            System.out.println("Nombre: " + votante.getNombre() + ", Identificación: " + votante.getIdentificacion());
+        }
+    }
 }
 
 class Votante {
