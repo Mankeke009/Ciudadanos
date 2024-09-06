@@ -82,7 +82,6 @@ public class Ciudadanos {
         votantes.add(new Votante(nombre, id));
         System.out.println("Votante registrado con éxito.");
     }
-    
     private static void crearConsulta(Scanner scanner) {
         String nombre;
         while (true){
