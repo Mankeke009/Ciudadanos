@@ -59,6 +59,14 @@ public class Ciudadanos {
         }
         return true;
     }
+    private static boolean repiteId(String id) {
+        for (Votante v : votantes) {
+            if (v.getIdentificacion().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
     private static void registrarVotante(Scanner scanner) {
         String nombre;
         while (true){ 
@@ -73,10 +81,15 @@ public class Ciudadanos {
         while (true){ 
             System.out.println("Identificación:");
             id = scanner.nextLine();
-            if (soloNumeros(id)) {
+            if (soloNumeros(id) && !repiteId(id)) {
                 break;
             }
-            System.out.println("Identificación inválida. Debe contener solo números.");
+            if(repiteId(id)){
+                System.out.println("Identificación inválida. id existente.");     
+            }
+            else{
+                System.out.println("Identificación inválida. Debe contener solo números.");
+            }
         }
 
         votantes.add(new Votante(nombre, id));
