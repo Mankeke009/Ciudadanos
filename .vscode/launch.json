@@ -12,6 +12,7 @@
             "projectName": "Ciudadanos_c63d7382"
         },
         {
+            "type" : "java" ,
             "request": "launch",
             "name": "Launch Java App"
         }
