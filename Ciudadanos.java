@@ -17,8 +17,8 @@ public class Ciudadanos {
             System.out.println("3. Mostrar Resultados");
             System.out.println("4. Ver Votantes");
             System.out.println("5. Salir");
-            opcion = scanner.nextInt();
-            scanner.nextLine();  
+            
+            opcion = leerOpcion(scanner);
 
             switch (opcion) {
                 case 1:
@@ -43,6 +43,7 @@ public class Ciudadanos {
         
         scanner.close();
     }
+    //-----------------------------------------------------------------------------------------------------------
     private static boolean soloLetras(String nombre){
         for (char c : nombre.toCharArray()) {
             if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
@@ -67,6 +68,27 @@ public class Ciudadanos {
         }
         return false;
     }
+    private static Votante obtenerID(String nombre) {
+        for (Votante v : votantes) {
+            if (v.getNombre().equals(nombre)) {
+                return v;
+            }
+        }
+        return null;  
+    }
+    private static int leerOpcion(Scanner scanner) {
+        String entrada;
+        while (true) {
+            System.out.print("Elige una opción: ");
+            entrada = scanner.nextLine();
+            if (soloNumeros(entrada)) {
+                return Integer.parseInt(entrada);  
+            } else {
+                System.out.println("Entrada no válida. Por favor, ingrese solo números.");
+            }
+        }
+    }
+    //-----------------------------------------------------------------------------------------------------------
     private static void registrarVotante(Scanner scanner) {
         String nombre;
         while (true){ 
@@ -105,7 +127,19 @@ public class Ciudadanos {
             }
             System.out.println("Consulta inválida. Debe contener solo letras.");
         }
-        ConsultaCiudadana consulta = new ConsultaCiudadana(nombre);
+        String nombreVotante;
+        Votante creador = null;
+        while (true) {
+            System.out.println("Nombre del votante que crea la consulta:");
+            nombreVotante = scanner.nextLine();
+            creador = obtenerID(nombreVotante);
+            if (creador != null) {
+                break;
+            }
+            System.out.println("Nombre inválido o no registrada. Debe ser una identificación de un votante registrado.");
+        }
+    
+        ConsultaCiudadana consulta = new ConsultaCiudadana(nombre, creador);
         consultas.add(consulta);
         System.out.println("Consulta creada con éxito.");
     }
@@ -116,7 +150,9 @@ public class Ciudadanos {
             return;
         }
         for (ConsultaCiudadana consulta : consultas) {
-            System.out.println("Resultados de la consulta: " + consulta.getNombre());
+            System.out.println("Resultados de la consulta: ");
+            System.out.println(consulta.getNombre());
+            System.out.println(" (ID: " + consulta.getCreador().getIdentificacion() + ")");
             consulta.mostrarResultados();
         }
     }
@@ -132,7 +168,7 @@ public class Ciudadanos {
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------
 class Votante {
     private String nombre;
     private String identificacion;
@@ -160,11 +196,16 @@ class Votante {
 }
 class ConsultaCiudadana {
     private String nombre;
+    private Votante creador;
     private List<Tema> temas;
 
-    public ConsultaCiudadana(String nombre) {
+    public ConsultaCiudadana(String nombre, Votante creador) {
         this.nombre = nombre;
+        this.creador = creador;
         this.temas = new ArrayList<>();
+    }
+    public Votante getCreador() {
+        return creador;
     }
 
     public void agregarTema(Tema tema) {
