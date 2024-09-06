@@ -43,17 +43,56 @@ public class Ciudadanos {
         
         scanner.close();
     }
+    private static boolean soloLetras(String nombre){
+        for (char c : nombre.toCharArray()) {
+            if (!Character.isLetter(c) && !Character.isWhitespace(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean soloNumeros(String id){
+        for (char c : id.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
     private static void registrarVotante(Scanner scanner) {
-        System.out.println("Nombre del votante:");
-        String nombre = scanner.nextLine();
-        System.out.println("Identificación:");
-        String id = scanner.nextLine();
+        String nombre;
+        while (true){ 
+            System.out.println("Nombre del votante:");
+            nombre = scanner.nextLine();
+            if (soloLetras(nombre)) {
+                break;
+            }
+            System.out.println("Nombre inválido. Debe contener solo letras.");
+        }
+        String id;
+        while (true){ 
+            System.out.println("Identificación:");
+            id = scanner.nextLine();
+            if (soloNumeros(id)) {
+                break;
+            }
+            System.out.println("Identificación inválida. Debe contener solo números.");
+        }
+
         votantes.add(new Votante(nombre, id));
         System.out.println("Votante registrado con éxito.");
     }
+    
     private static void crearConsulta(Scanner scanner) {
-        System.out.println("Nombre de la consulta:");
-        String nombre = scanner.nextLine();
+        String nombre;
+        while (true){
+            System.out.println("Nombre de la consulta:");
+            nombre = scanner.nextLine();
+            if (soloLetras(nombre)) {
+                break;
+            }
+            System.out.println("Consulta inválida. Debe contener solo letras.");
+        }
         ConsultaCiudadana consulta = new ConsultaCiudadana(nombre);
         consultas.add(consulta);
         System.out.println("Consulta creada con éxito.");
