@@ -67,8 +67,14 @@ public class ControladoraL {
             return "No se encontró el rol de Visitante.";
         }
 
-        crearUsuario(nombreU,contrasenaU,"");
-         
+        
+        Usuario nuevoUsuario = new Usuario();
+        nuevoUsuario.setNombreU(nombreU);
+        nuevoUsuario.setContrasenaU(contrasenaU);
+        nuevoUsuario.setUnRol(rolVisitante);
+        nuevoUsuario.setId(maxID());
+
+        guardarUsuario(nuevoUsuario);  
 
         return "Registro exitoso!";
     }
@@ -142,6 +148,10 @@ public class ControladoraL {
             usu.setUnRol(rolE);
         }
         controlP.editarUsuario(usu);
+    }
+
+    private long maxID() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
    

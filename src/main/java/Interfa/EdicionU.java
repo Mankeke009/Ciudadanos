@@ -164,7 +164,7 @@ public class EdicionU extends javax.swing.JFrame {
         String usuario = txtNombreU.getText();
         String contra = txtContrasena.getText();
         String rol = (String) cmbRoles.getSelectedItem();
-
+        //System.out.println("Roles" + rol);
         control.editarUsuario(usu,usuario,contra,rol);
         this.dispose();
 
