@@ -159,7 +159,7 @@ ControladoraL control;
     String usuario = txtUsuario.getText();
     String contrasena = txtContrasena.getText();
     String mensaje = control.registrarUsuario(usuario, contrasena);
-    txtMensaje.setText(mensaje); 
+    String rol = (String) cmbRoles.getSelectedItem();
     }//GEN-LAST:event_botonRegistrarActionPerformed
 
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
