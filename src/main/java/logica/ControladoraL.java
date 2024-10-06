@@ -149,6 +149,8 @@ public class ControladoraL {
         controlP.editarUsuario(usu);
     }
 
+   
+
     
    
    

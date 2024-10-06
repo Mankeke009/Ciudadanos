@@ -4,6 +4,9 @@
  */
 package Interfa;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import logica.ControladoraL;
 import logica.Usuario;
 
@@ -99,9 +102,9 @@ ControladoraL control;
                                 .addComponent(txtUsuario))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(botonLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(botonRegistrar)
-                        .addGap(66, 66, 66)
+                        .addGap(58, 58, 58)
                         .addComponent(BotonLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
                     .addComponent(jSeparator2)
@@ -156,12 +159,11 @@ ControladoraL control;
     }//GEN-LAST:event_BotonLimpiarActionPerformed
 
     private void botonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarActionPerformed
-    String usuario = txtUsuario.getText();
-    String contrasena = txtContrasena.getText();
-    String mensaje = control.registrarUsuario(usuario, contrasena);
-    String rol = (String) cmbRoles.getSelectedItem();
+        CrearULogin crearU = new CrearULogin(control);
+        crearU.setVisible(true);
+        crearU.setLocationRelativeTo(null); 
     }//GEN-LAST:event_botonRegistrarActionPerformed
-
+/*
     private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLoginActionPerformed
         String usuario = txtUsuario.getText();
         String contrasena = txtContrasena.getText();
@@ -187,6 +189,46 @@ ControladoraL control;
         
     }//GEN-LAST:event_botonLoginActionPerformed
 
+*/
+
+// ...
+
+private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    String usuario = txtUsuario.getText();
+    String contrasena = txtContrasena.getText();
+    Usuario user = control.validarUsuario(usuario, contrasena);
+    
+    if (user != null) {
+        String rol = user.getUnRol().getNombreR();
+        
+        // Llama a la función para guardar solo el nombre del usuario
+        guardarNombreUsuario(usuario);
+        
+        if (rol.equals("Administrador")) {
+            PrincipalAdmin pAdmin = new PrincipalAdmin(control, user);
+            pAdmin.setVisible(true);
+            pAdmin.setLocationRelativeTo(null);
+            this.dispose();
+        } else if (rol.equals("Votantes")) {
+            PrincipalUsuario pUser = new PrincipalUsuario(control, user);
+            pUser.setVisible(true);
+            pUser.setLocationRelativeTo(null);
+            this.dispose();
+        }
+    } else {
+        txtMensaje.setText("Usuario o contraseña incorrectos");
+    }
+}
+
+// Función para guardar solo el nombre del usuario en el archivo respuesta.txt
+private void guardarNombreUsuario(String usuario) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("respuesta.txt", true))) {
+        writer.write(usuario);
+        writer.newLine(); // Nueva línea después de cada nombre
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonLimpiar;

@@ -154,7 +154,10 @@ public class CrearULogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbRolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRolesActionPerformed
-        // TODO add your handling code here:
+        Educacion encuestaE = new Educacion(control);
+        encuestaE.setVisible(true);
+        encuestaE.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_cmbRolesActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
@@ -168,7 +171,7 @@ public class CrearULogin extends javax.swing.JFrame {
         String contra = txtContrasena.getText();
         String rol = (String) cmbRoles.getSelectedItem();
 
-        control.crearUsuario(usuario,contra,rol);
+        //control.crearUsuarioSin(usuario,contra,rol);
         this.dispose();
 
     }//GEN-LAST:event_BtnGuardarActionPerformed

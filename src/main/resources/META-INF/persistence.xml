@@ -7,6 +7,8 @@
     <class>logica.Pregunta</class>
     <class>logica.Respuesta</class>
     <class>logica.Tema</class>
+    <class>logica.Respuestas</class>
+    <class>logica.Preguntas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ciudadanos?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -123,16 +123,17 @@ public class PrincipalUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnSaludActionPerformed
 
     private void BtnEducacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEducacionActionPerformed
-        // TODO add your handling code here:
+        Educacion encuestaE = new Educacion(control);
+        encuestaE.setVisible(true);
+        encuestaE.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_BtnEducacionActionPerformed
 
     private void BtnMedioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMedioAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnMedioAActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     
    
 
