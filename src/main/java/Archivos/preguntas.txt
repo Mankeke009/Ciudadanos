@@ -1,0 +1,18 @@
+1;Salud;¿Crees que la atención médica debería ser gratuita?
+2;Salud;¿Apoyas la implementación de programas de prevención de enfermedades?
+3;Salud;¿Es importante fomentar la educación sobre salud mental?
+4;Salud;¿Debería existir un sistema de salud universal?
+5;Salud;¿Consideras que el gobierno debe invertir más en salud pública?
+6;Salud;¿Crees que el acceso a medicamentos debería ser un derecho?
+7;Educación;¿Consideras que la educación pública necesita reformas?
+8;Educación;¿Deberían los estudiantes recibir clases de educación financiera?
+9;Educación;¿Es necesaria la educación sexual en las escuelas?
+10;Educación;¿Crees que se debería aumentar el número de horas de clase?
+11;Educación;¿Deberían los exámenes estandarizados ser eliminados?
+12;Educación;¿Es importante fomentar el aprendizaje de idiomas en la educación básica?
+13;Medio Ambiente;¿Crees que se deberían implementar más políticas ambientales?
+14;Medio Ambiente;¿Es necesario promover el reciclaje en las escuelas?
+15;Medio Ambiente;¿Debería prohibirse el uso de plásticos de un solo uso?
+16;Medio Ambiente;¿Apoyas la conservación de áreas naturales protegidas?
+17;Medio Ambiente;¿Crees que las empresas deberían ser responsables por sus emisiones de CO2?
+18;Medio Ambiente;¿Es fundamental fomentar la educación ambiental en la infancia?
