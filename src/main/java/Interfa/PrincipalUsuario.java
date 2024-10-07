@@ -119,18 +119,24 @@ public class PrincipalUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSaludActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaludActionPerformed
-        // TODO add your handling code here:
+        Salud encuestaS = new Salud(control);
+        encuestaS.setVisible(true);
+        encuestaS.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_BtnSaludActionPerformed
 
     private void BtnEducacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEducacionActionPerformed
         Educacion encuestaE = new Educacion(control);
         encuestaE.setVisible(true);
         encuestaE.setLocationRelativeTo(null);
-        this.dispose();
+        
     }//GEN-LAST:event_BtnEducacionActionPerformed
 
     private void BtnMedioAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMedioAActionPerformed
-        // TODO add your handling code here:
+        MAmbiente encuestaMA = new MAmbiente(control);
+        encuestaMA.setVisible(true);
+        encuestaMA.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_BtnMedioAActionPerformed
 
     

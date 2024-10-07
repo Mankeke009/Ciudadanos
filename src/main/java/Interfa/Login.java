@@ -200,11 +200,12 @@ private void botonLoginActionPerformed(java.awt.event.ActionEvent evt) {
     
     if (user != null) {
         String rol = user.getUnRol().getNombreR();
-        
+        //System.out.println("Roles = " + usuario + " || " + user.getUnRol().getNombreR());
         // Llama a la función para guardar solo el nombre del usuario
         guardarNombreUsuario(usuario);
-        
+        //System.out.println("Roles = " + usuario + " || " + user.getUnRol().getNombreR());
         if (rol.equals("Administrador")) {
+            //System.out.println("aquiiiiiiii Roles = " + usuario + " || " + user.getUnRol().getNombreR());
             PrincipalAdmin pAdmin = new PrincipalAdmin(control, user);
             pAdmin.setVisible(true);
             pAdmin.setLocationRelativeTo(null);
